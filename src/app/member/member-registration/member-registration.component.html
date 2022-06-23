@@ -1,0 +1,236 @@
+<!--
+<div class="wrapper">
+    Top menu 
+    <div class="sidebar">
+        <div class="profile">
+            <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg"
+                alt="profile_picture">
+            <h3>Anamika Roy</h3>
+            <p>Designer</p>
+        </div>
+        <ul>
+            <li>
+                <a href="#" class="active">
+                    <span class="icon"><i class="fas fa-home"></i></span>
+                    <span class="item">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-desktop"></i></span>
+                    <span class="item">My Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-user-friends"></i></span>
+                    <span class="item">People</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+                    <span class="item">Perfomance</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span class="item">Development</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="item">Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-user-shield"></i></span>
+                    <span class="item">Admin</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-cog"></i></span>
+                    <span class="item">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="section">
+        <div class="top_navbar">
+            <div class="hamburger">
+                <a href="#">
+                    <i class="fas fa-bars"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+-->
+<div class="container-card col d-flex justify-content-center" style="width: 80rem;">
+    <div class="card">
+        <div class="card-header">
+            Member Info
+        </div>
+        <div class="form-container">
+            <div class="card-body">
+                <div class="form-container">
+                    <form (ngSubmit)="saveMember()" #memberForm="ngForm">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4"><label for="firstName">FirstName</label>
+                                            <input type="text" name="firstName" class="form-control"
+                                                [(ngModel)]="firstName">
+                                        </div>
+                                        <div class="col-md-4"><label for="lastName">Last Name</label>
+                                            <input type="text" name="lastName" class="form-control" id="lastName">
+                                        </div>
+                                        <div class="col-md-4"><label for="email">Email</label>
+                                            <input type="text" name="email" [(ngModel)]="email" class="form-control"
+                                                id="email">
+                                        </div>
+                                        <div class="col-md-4"><label for="phone">phone</label>
+                                            <input type="text" name="phone" [(ngModel)]="phone" class="form-control"
+                                                id="phone">
+                                        </div>
+                                        <div class="col-md-4"><label for="secondaryPhone">Secondary Phone</label>
+                                            <input type="text" name="phone" [(ngModel)]="secondaryPhone"
+                                                class="form-control" id="secondaryPhone">
+                                        </div>
+                                        <div class="col-md-4"><label for="dateOfBirth">DateOfBirth</label>
+                                            <input type="text" name="dateOfBirth" [(ngModel)]="dateOfBirth"
+                                                class="form-control" id="dateOfBirth">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Gender</label>
+                                            <div class="form-control">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="gender" value="male" [(ngModel)]="gender">
+                                                    Male
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="gender" value="female"
+                                                        [(ngModel)]="gender">
+                                                    Female
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 10px">
+
+                            </div>
+                            <div class="row justify-content-center">
+
+                                <button class="btn btn-primary" type="submit">Save</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-card col d-flex justify-content-center" style="width: 80rem;">
+    <div class="card">
+        <div class="card-header">
+            Address Info
+        </div>
+        <div class="form-container">
+            <div class="card-body">
+                <div class="form-container">
+                    <form form (ngSubmit)="addAdress(addressForm)" #addressForm="ngForm">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4"><label for="street">Street</label>
+                                            <input type="text" name="street" [(ngModel)]="street" class="form-control"
+                                                id="street">
+                                        </div>
+                                        <div class="col-md-4"><label for="colony">Colony</label>
+                                            <input type="text" name="colony" [(ngModel)]="colony" class="form-control"
+                                                id="colony">
+                                        </div>
+                                        <div class="col-md-4"><label for="area">Area</label>
+                                            <input type="text" name="area" [(ngModel)]="area" class="form-control"
+                                                id="area">
+                                        </div>
+                                        <div class="col-md-4"><label for="city">City</label>
+                                            <input type="text" name="city" [(ngModel)]="city" class="form-control"
+                                                id="city">
+                                        </div>
+                                        <div class="col-md-4"><label for="pinCode">PinCode</label>
+                                            <input type="number" name="pinCode" [(ngModel)]="pinCode"
+                                                class="form-control" id="pinCode">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div style="margin-top: 10px">
+
+                            </div>
+                            <div class="row justify-content-center">
+
+                                <button class="btn btn-primary" type="submit">save Address</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-card col d-flex justify-content-center" style="width: 100rem;">
+    <div class="card">
+        <div class="card-header">
+            Address Info
+        </div>
+        <div class="form-container">
+            <div class="card-body">
+                <div class="form-container">
+                    <form form (ngSubmit)="addAdress(indentityProofForm)" #indentityProofForm="ngForm">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6"><label for="street">Proof Type</label>
+                                            <input type="text" name="proofType" [(ngModel)]="proofType" class="form-control"
+                                                id="proofType">
+                                        </div>
+                                        <div class="col-md-6"><label for="colony">Identification Numbar</label>
+                                            <input type="text" name="identityNumber" [(ngModel)]="identityNumber" class="form-control"
+                                                id="identityNumber">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div style="margin-top: 10px">
+
+                            </div>
+                            <div class="row justify-content-center">
+
+                                <button class="btn btn-primary" type="submit">save IdProof</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
