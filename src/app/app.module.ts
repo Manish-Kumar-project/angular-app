@@ -9,12 +9,16 @@ import { MemberRegistrationComponent } from './member/member-registration/member
 import { ProductConfigurationListComponent } from './product/product-configuration-list/product-configuration-list.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { PaymentDetailsComponent } from './payment/payment-details/payment-details.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DemotestComponent } from './demotest/demotest.component';
+
 
 const appRoutes: Routes = [
   { path: 'member', component: MemberRegistrationComponent },
   { path: 'products', component: ProductConfigurationListComponent },
-  { path: 'product-detail', component: ProductDetailComponent },
-  { path: 'payment-detail', component: PaymentDetailsComponent }
+  { path: 'product-detail/:id', component: ProductDetailComponent },
+  { path: 'payment-detail', component: PaymentDetailsComponent },
+  { path: 'appdata', component: DemotestComponent }
 
 
 ];
@@ -27,13 +31,16 @@ const appRoutes: Routes = [
     ProductConfigurationListComponent,
     ProductDetailComponent,
     PaymentDetailsComponent,
+    DemotestComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    HttpClientModule
+
 
 
   ],

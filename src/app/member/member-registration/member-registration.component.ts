@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormArray, NgForm } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { MemberService } from 'src/app/services/member.service';
 
 @Component({
   selector: 'app-member-registration',
@@ -27,17 +29,75 @@ export class MemberRegistrationComponent implements OnInit {
   addressList:any=[];
   idproof={};
   idProofList:any= [];
+  testId = '';
+  testName = '';
+  testObject:any = {};
+
+  public testSubject = new Subject<String>();
+  public testObjectSubject = new Subject<Object>();
+  testEventEmitter = new EventEmitter<Object>();
+
+  emp = {
+    name: 'james',
+    emailid : 'james@gmail.com'
+  }
 
   
-  constructor() { }
+  constructor(private _memberService: MemberService) { }
 
   ngOnInit(): void {
-    this.member = {
-      firstName: '',
-    }
+    this.testEventEmitter.emit(this.emp);
+    // this.member = {
+    //   firstName: '',
+    // }
+    // this.testSubject.subscribe(d=>{
+    //   console.log('testing data',d);
+    // })
+    // this.testSubject.subscribe(d=>{
+    //   console.log('testing data 2',d);
+    // })
+    // this.testSubject.subscribe(d=>{
+    //   console.log('testing data 3',d);
+    // })
+    // this.testSubject.subscribe(d=>{
+    //   console.log('testing data 4',d);
+    // })
+    // this.testSubject.next("Hello World");
+
+    // this.testSubject.subscribe(d=>{
+    //   console.log('testing data 2',d);
+    // })
+    
+    // this.testObjectSubject.subscribe(emp=>{
+    //   console.log('testing the employee Object',emp);
+    // })
+    // this.testObjectSubject.subscribe(emp=>{
+    //   console.log('testing the employee Object - 1',emp);
+    // })
+    // this.testObjectSubject.subscribe(emp=>{
+    //   console.log('testing the employee Object - 2 ',emp);
+    // })
+    // this.testObjectSubject.next(this.emp);
+
+    this.testEventEmitter.subscribe(emp=>{
+      console.log('test event emitter in log',emp)
+this.testObject = emp;    })
+    this.testEventEmitter.emit(this.emp);
+    this.testEventEmitter.subscribe(emp=>{
+      console.log('test event emitter in log 2',emp)
+this.testObject = emp;    })
+
   }
 
   addAdress(addressInfo: NgForm){
+
+  this.testObjectSubject.subscribe(emp=>{
+    console.log("testing testing ", emp);
+  })
+  this.testEventEmitter.subscribe(emp=>{
+    console.log('test event emitter in log',emp)
+  })
+  console.log('test object ', this.testObject);
     let addressRequest = {
       street: addressInfo.value.street ? addressInfo.value.street : '',
       colony: addressInfo.value.colony ? addressInfo.value.colony : '',
@@ -64,9 +124,6 @@ export class MemberRegistrationComponent implements OnInit {
     indentityProofForm.reset();
   }
   saveMember(): void {
-
-    
-    
     let request = {
       firstName: this.firstName ? this.firstName : '',
       lastName: this.lastName ? this.lastName : '',
@@ -78,10 +135,16 @@ export class MemberRegistrationComponent implements OnInit {
       listOfAddress: this.addressList?this.addressList:'',
       listOfIdentityProof:this.idProofList
     }
-    
+    this._memberService.saveMemberDetails(request).subscribe((response) => this.success(), (error) =>this.failure(error));
+    ;
     console.log(request)
   }
- 
+  success() {
+    // this.toastr.success('Saved Successfully')  
+    }
+    failure(error: any) {
+     
+    } 
  
 	}
 

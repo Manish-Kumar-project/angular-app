@@ -33,5 +33,10 @@
         <div class="col-12">
             <p class="card-text">productModelName  : {{product.productModelName}}</p>
         </div>
+        <div class="col-md-12"><label for="productQuantitytoBuy">how many product</label>
+            <input type="number" name="productQuantitytoBuy" [(ngModel)]="productQuantitBuy" class="form-control" id="productQuantitytoBuy">
+        </div>
+        <button class="btn btn-primary" (click) = "buyProduct()">Buy Now</button>
+
     </div>
 </div>
